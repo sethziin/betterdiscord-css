@@ -1,23 +1,36 @@
+/* Esconde placeholder nativo */
 .placeholder__1b31f {
     opacity: 0 !important;
 }
 
+/* Permite pseudo-elemento */
 .textArea__74017 {
     position: relative !important;
 }
 
+/* Placeholder custom */
 .textArea__74017::before {
     content: var(--prompt-text);
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    left: 0;
+
     font-size: 16px;
     pointer-events: none;
-    color: rgba(255, 255, 255, 0.7); /* <-- CLARO E VISÍVEL SEM SER BRANCO PURO */
-    opacity: 0.8;
+    color: rgba(255,255,255,0.75);
+    opacity: 0.9;
+
     transition: opacity 0.15s ease;
+    padding-left: 12px;
 }
 
-.textArea__74017:not(:has(.emptyText__1464f))::before {
-    opacity: 0;
+/* Some quando tem QUALQUER TEXTO real */
+.textArea__74017:has([data-slate-string="true"]:not([data-slate-length="0"]))::before {
+    opacity: 0 !important;
+}
+
+/* Garante sumiço durante foco se houver texto */
+.textArea__74017:focus-within:has([data-slate-string="true"]:not([data-slate-length="0"]))::before {
+    opacity: 0 !important;
 }
