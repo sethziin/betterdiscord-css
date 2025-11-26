@@ -1,20 +1,16 @@
-/* Esconde placeholder nativo */
 .placeholder__1b31f {
     opacity: 0 !important;
 }
 
-/* Permite pseudo-elemento */
 .textArea__74017 {
     position: relative !important;
 }
 
-/* Placeholder custom */
 .textArea__74017::before {
     content: var(--prompt-text);
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 12px;
 
     font-size: 16px;
     pointer-events: none;
@@ -23,21 +19,14 @@
     transition: opacity 0.15s ease;
 }
 
-/* =============================== */
-/*    LÓGICA REAL "TEM TEXTO?"      */
-/* =============================== */
-
-/* Oculta quando existir QUALQUER elemento COM TEXTO real */
 .textArea__74017:has([data-slate-string="true"]:not([data-slate-zero-width]))::before {
     opacity: 0 !important;
 }
 
-/* Oculta quando existir QUALQUER span com conteúdo */
 .textArea__74017:has([data-slate-string="true"]:not(:empty))::before {
     opacity: 0 !important;
 }
 
-/* Oculta quando houver qualquer nó de texto visível */
 .textArea__74017:has(span[data-slate-length]):not(:has(span[data-slate-length="0"]))::before {
     opacity: 0 !important;
 }
