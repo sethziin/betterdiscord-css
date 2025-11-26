@@ -1,42 +1,28 @@
-/* Dynamic placeholder with single brightness control */
-
-/* Esconde o placeholder original */
-.placeholder__1b31f {
+[class^="placeholder_"] {
     opacity: 0 !important;
 }
 
-.textArea__74017 {
+[class^="textArea_"] {
     position: relative !important;
 }
 
-/* Placeholder dinâmico com 1 variável (brightness) */
-.textArea__74017::before {
+[class^="textArea_"]::before {
     content: var(--prompt-text);
-
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 16px;
 
+    font-size: 16px;
     pointer-events: none;
 
-    /* brilho dinâmico (0% → invisível / 100% → opaco) */
-    opacity: calc(var(--placeholder-brightness, 70%) / 100);
-
-    /* cor se adapta: quanto menor o brilho, mais escuro */
-    color: rgba(
-        255,
-        255,
-        255,
-        calc(var(--placeholder-brightness, 70%) / 100)
-    );
+    opacity: calc(var(--prompt-brightness, 70) / 100);
+    color: rgba(255, 255, 255, calc(var(--prompt-brightness, 70) / 100));
 
     transition: opacity 0.15s ease;
 }
 
-/* Some quando alguém digita */
-.textArea__74017:has([data-slate-string="true"]:not([data-slate-zero-width]))::before,
-.textArea__74017:has([data-slate-string="true"]:not(:empty))::before,
-.textArea__74017:has(span[data-slate-length]):not(:has(span[data-slate-length="0"]))::before {
+[class^="textArea_"]:has([data-slate-string="true"]:not([data-slate-zero-width]))::before,
+[class^="textArea_"]:has([data-slate-string="true"]:not(:empty))::before,
+[class^="textArea_"]:has(span[data-slate-length]):not(:has(span[data-slate-length="0"]))::before {
     opacity: 0 !important;
 }
