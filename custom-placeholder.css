@@ -1,0 +1,23 @@
+.placeholder__1b31f {
+    opacity: 0 !important;
+}
+
+.textArea__74017 {
+    position: relative !important;
+}
+
+.textArea__74017::before {
+    content: var(--prompt-text);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    color: var(--text-muted);
+    opacity: 0.6;
+    transition: opacity 0.15s ease;
+}
+
+.textArea__74017:not(:has(.emptyText__1464f))::before {
+    opacity: 0;
+}
