@@ -13,8 +13,8 @@
     transform: translateY(-50%);
     font-size: 16px;
     pointer-events: none;
-    color: var(--text-muted);
-    opacity: 0.6;
+    color: rgba(255, 255, 255, 0.7); /* <-- CLARO E VISÍVEL SEM SER BRANCO PURO */
+    opacity: 0.8;
     transition: opacity 0.15s ease;
 }
 
