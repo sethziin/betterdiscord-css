@@ -14,23 +14,30 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 0;
+    left: 12px;
 
     font-size: 16px;
     pointer-events: none;
-    color: rgba(255,255,255,0.75);
-    opacity: 0.9;
-
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 0.85;
     transition: opacity 0.15s ease;
-    padding-left: 12px;
 }
 
-/* Some quando tem QUALQUER TEXTO real */
-.textArea__74017:has([data-slate-string="true"]:not([data-slate-length="0"]))::before {
+/* =============================== */
+/*    LÓGICA REAL "TEM TEXTO?"      */
+/* =============================== */
+
+/* Oculta quando existir QUALQUER elemento COM TEXTO real */
+.textArea__74017:has([data-slate-string="true"]:not([data-slate-zero-width]))::before {
     opacity: 0 !important;
 }
 
-/* Garante sumiço durante foco se houver texto */
-.textArea__74017:focus-within:has([data-slate-string="true"]:not([data-slate-length="0"]))::before {
+/* Oculta quando existir QUALQUER span com conteúdo */
+.textArea__74017:has([data-slate-string="true"]:not(:empty))::before {
+    opacity: 0 !important;
+}
+
+/* Oculta quando houver qualquer nó de texto visível */
+.textArea__74017:has(span[data-slate-length]):not(:has(span[data-slate-length="0"]))::before {
     opacity: 0 !important;
 }
